@@ -109,9 +109,6 @@ public class JavaListTest {
 		Assert.assertEquals("1", data.getIndex(0));
 	}
 	
-	// TODO: test list remove
-	// TODO test addIndex methods.
-	
 	@Test
 	public void testGetFront() {
 		ListADT<String> data = makeFullList();
