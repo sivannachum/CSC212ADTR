@@ -1,5 +1,7 @@
 package edu.smith.cs.csc212.adtr;
 
+import java.awt.List;
+
 import edu.smith.cs.csc212.adtr.real.JavaMap;
 import edu.smith.cs.csc212.adtr.real.JavaSet;
 
@@ -8,7 +10,19 @@ public class Challenges {
 	// The union of two sets is the set of elements that either contains.
 	public static SetADT<Integer> union(SetADT<Integer> left, SetADT<Integer> right) {
 		SetADT<Integer> output = new JavaSet<>();
-		
+		/**
+		 * Make left and right into lists
+		 * then iterate over their contents and add them to the output set
+		 * Any duplicates will only appear once in the set
+		 */
+		ListADT<Integer> leftListADT = left.toList();
+		for (Integer i : leftListADT) {
+			output.insert(i);
+		}
+		ListADT<Integer> rightListADT = right.toList();
+		for (Integer i : rightListADT) {
+			output.insert(i);
+		}
 		return output;
 	}
 	

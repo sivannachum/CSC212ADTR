@@ -172,7 +172,78 @@ public class JavaListTest {
 		data.addIndex(-1, "the");
 	}
 	
-	// TODO write some tests for setIndex.
+	// Test that addIndex actually changes the value at the index
+	// Make sure the next value in the list is what was previously at the index that was added
+		@Test
+		public void testAddIndex() {
+			ListADT<String> data = makeFullList();
+			String originalOne = data.getIndex(1);
+			data.addIndex(1, "r");
+			assertEquals(data.getIndex(1), "r");
+			assertEquals(data.getIndex(2), originalOne);
+		}
+	
+	// Test too low index for setIndex
+	@Test(expected=BadIndexError.class)
+	public void testSetIndexLow() {
+		ListADT<String> data = makeFullList();
+		data.setIndex(-1, "the");
+	}
+	
+	// Test too high index for setIndex
+	@Test(expected=BadIndexError.class)
+	public void testSetIndexHigh() {
+		ListADT<String> data = makeFullList();
+		data.setIndex(data.size()+1, "the");
+	}
+	
+	// Test very high too high index for setIndex
+	@Test(expected=BadIndexError.class)
+	public void testSetIndexHighEasy() {
+		ListADT<String> data = makeFullList();
+		data.setIndex(data.size()*2, "the");
+	}
+	
+	// Test that setIndex actually changes the value at the index
+	// Make sure that the next value in the list was the same as it was before
+	@Test
+	public void testSetIndex() {
+		ListADT<String> data = makeFullList();
+		String originalTwo = data.getIndex(2);
+		data.setIndex(1, "r");
+		assertEquals(data.getIndex(1), "r");
+		assertEquals(data.getIndex(2), originalTwo);
+	}
+	
+	// Make sure removeBack returns the item that is there
+	// Make sure the size of the list decrements by one
+	@Test
+	public void testRemoveBack() {
+		ListADT<String> data = makeFullList();
+		int originalSize = data.size();
+		assertEquals(data.getBack(), data.removeBack());
+		assertEquals(data.size(), originalSize - 1);
+	}
+	
+	// Make sure removeIndex returns the item that is there
+	// Make sure the size of the list decrements by one
+	@Test
+	public void testRemoveIndex() {
+		ListADT<String> data = makeFullList();
+		int originalSize = data.size();
+		assertEquals(data.getIndex(1), data.removeIndex(1));
+		assertEquals(data.size(), originalSize - 1);
+	}
+		
+	// Make sure removeFront returns the item that is there
+	// Make sure the size of the list decrements by one
+	@Test
+	public void testRemoveFront() {
+		ListADT<String> data = makeFullList();
+		int originalSize = data.size();
+		assertEquals(data.getFront(), data.removeFront());
+		assertEquals(data.size(), originalSize - 1);
+	}
 	
 	@Test
 	public void testToJava() {
