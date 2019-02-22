@@ -171,14 +171,14 @@ public class JavaListTest {
 	
 	// Test that addIndex actually changes the value at the index
 	// Make sure the next value in the list is what was previously at the index that was added
-		@Test
-		public void testAddIndex() {
-			ListADT<String> data = makeFullList();
-			String originalOne = data.getIndex(1);
-			data.addIndex(1, "r");
-			assertEquals(data.getIndex(1), "r");
-			assertEquals(data.getIndex(2), originalOne);
-		}
+	@Test
+	public void testAddIndex() {
+		ListADT<String> data = makeFullList();
+		String originalOne = data.getIndex(1);
+		data.addIndex(1, "r");
+		assertEquals(data.getIndex(1), "r");
+		assertEquals(data.getIndex(2), originalOne);
+	}
 	
 	// Test too low index for setIndex
 	@Test(expected=BadIndexError.class)
@@ -202,7 +202,7 @@ public class JavaListTest {
 	}
 	
 	// Test that setIndex actually changes the value at the index
-	// Make sure that the next value in the list was the same as it was before
+	// Make sure that the next value in the list is the same as it was before
 	@Test
 	public void testSetIndex() {
 		ListADT<String> data = makeFullList();

@@ -19,7 +19,6 @@ public class JavaMapTest {
 	public void testEmpty() {
 		MapADT<String, Integer> empty = new JavaMap<>();
 		assertEquals(empty.size(), 0);
-		//Assert.assert
 	}
 	
 	// Put A - 1, B - 2, A - 3, C - 3 in Map
@@ -44,7 +43,7 @@ public class JavaMapTest {
 	}
 	
 	// Put A - 1 and A - 2 in Map
-	// Make sure get(A) returns 2
+	// Make sure get returns 2
 	@Test
 	public void testGetDuplicate() {
 		MapADT<String, Integer> a = new JavaMap<>();
@@ -55,12 +54,12 @@ public class JavaMapTest {
 	
 	// Put A - 1 in Map
 	// Remove A
-	// Make sure get(A) is null
+	// Make sure get is null
 	@Test
 	public void testRemove() {
 		MapADT<String, Integer> a = new JavaMap<>();
 		a.put("A", 1);
-		assertEquals(a.remove("A"), new Integer(1));
+		assertIntEq(a.remove("A"), 1);
 		assertNull(a.get("A"));
 	}
 	
@@ -78,6 +77,7 @@ public class JavaMapTest {
 	// Get the Keys
 	// Make sure the List has the same size as the Map
 	// Make sure the List contains A
+	@Test
 	public void testGetKeysFilled() {
 		MapADT<String, Integer> abc = new JavaMap<>();
 		abc.put("A", 1);
@@ -145,7 +145,7 @@ public class JavaMapTest {
 	
 	// Put A - 1, B - 2, A - 3, and C - 4 in map
 	// Convert it to Java
-	// Make sure the Java's map has the same size as the map
+	// Make sure the Java map has the same size as the map
 	// Make sure both maps contain the same value for A
 	@Test
 	public void testToJavaFilled() {

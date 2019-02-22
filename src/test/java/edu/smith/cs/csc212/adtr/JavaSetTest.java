@@ -63,6 +63,7 @@ public class JavaSetTest {
 	// Add A and B
 	// Remove B
 	// Test if set still contains B
+	// Make sure set still contains A
 	@Test
 	public void testRemove() {
 		SetADT<String> ab = new JavaSet<>();
@@ -70,6 +71,7 @@ public class JavaSetTest {
 		ab.insert("B");
 		ab.remove("B");
 		assertFalse(ab.contains("B"));
+		assertTrue(ab.contains("A"));
 	}
 	
 	// Make an empty set
@@ -119,7 +121,6 @@ public class JavaSetTest {
 	// Convert to Java
 	// Make sure Java's set contains A, B, and C
 	// Make sure Java's set size is same as SetADT's size
-	// Make sure the list contains A
 	@Test
 	public void testToJavaFilled() {
 		SetADT<String> abc = new JavaSet<>();
@@ -129,17 +130,9 @@ public class JavaSetTest {
 		abc.insert("C");
 		Set<String> abcJava = abc.toJava();
 		assertEquals(abc.size(), abcJava.size());
-		assertTrue(abc.contains("A"));
-		assertTrue(abc.contains("B"));
-		assertTrue(abc.contains("C"));
-		boolean contains = false;
-		for (String s : abcJava) {
-			if (s.equals("A")) {
-				contains = true;
-				break;
-			}
-		}
-		assertTrue(contains);
+		assertTrue(abcJava.contains("A"));
+		assertTrue(abcJava.contains("B"));
+		assertTrue(abcJava.contains("C"));
 	}
 	
 }

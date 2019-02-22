@@ -60,4 +60,5 @@ public class Challenges {
 		}
 		return output;
 	}
+	
 }
